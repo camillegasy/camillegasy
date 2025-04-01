@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predictor by Camille</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: violet;
+        }
+        .container {
+            max-width: 300px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Predictor by Camille</h1>
+    <div id="login" class="container">
+        <h2>Connexion</h2>
+        <input type="text" id="username" placeholder="Nom d'utilisateur">
+        <input type="password" id="password" placeholder="Mot de passe">
+        <br>
+        <button onclick="verifierAcces()">Se connecter</button>
+    </div>
+    
+    <div id="calculator" class="container" style="display:none;">
+        <h2>Calculateur</h2>
+        <input type="number" id="tours" placeholder="Nombre de Tours">
+        <input type="number" id="multiplicateur" placeholder="Multiplicateur">
+        <br>
+        <button onclick="calculer()">Calculer</button>
+        <h3>Résultat: <span id="resultat">0</span></h3>
+    </div>
+    
+    <script>
+        function verifierAcces() {
+            let user = document.getElementById('username').value;
+            let pass = document.getElementById('password').value;
+            if (user === "Camille Nike" && pass === "Camille12") {
+                document.getElementById('login').style.display = "none";
+                document.getElementById('calculator').style.display = "block";
+            } else {
+                alert("Accès refusé !");
+            }
+        }
+        
+        function calculer() {
+            let tours = parseFloat(document.getElementById('tours').value) || 0;
+            let multiplicateur = parseFloat(document.getElementById('multiplicateur').value) || 0;
+            let resultat = tours;
+            
+            if (multiplicateur > 10) {
+                resultat += 11;
+            } else if (multiplicateur >= 2 && multiplicateur < 4) {
+                resultat += 8;
+            } else if (multiplicateur >= 4 && multiplicateur < 10) {
+                resultat += 10;
+            }
+            
+            document.getElementById('resultat').textContent = resultat;
+        }
+    </script>
+</body>
+</html>
